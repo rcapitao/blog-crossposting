@@ -48,7 +48,7 @@ O Threads (Meta) não tem uma forma simples de publicar sem usar a API oficial d
 
 ### 1. Descobrir a URL do feed RSS
 
-O feed RSS deste blog está em `https://www.rcapitao.com/feed/`.
+O feed RSS deste blog está em `https://rcapitao.com/feed.xml`.
 
 ### 2. Criar o token do Mastodon
 
@@ -69,7 +69,7 @@ O feed RSS deste blog está em `https://www.rcapitao.com/feed/`.
 Em **Settings → Secrets and variables → Actions** deste repositório:
 
 **Variables** (não sensíveis):
-- `FEED_URL` — ex: `https://www.rcapitao.com/feed/`
+- `FEED_URL` — `https://rcapitao.com/feed.xml`
 - `MASTODON_BASE_URL` — ex: `https://mastodon.social`
 - `BLUESKY_HANDLE` — ex: `rcapitao.bsky.social`
 
@@ -93,12 +93,14 @@ Alternativa local (se preferir rodar fora do GitHub Actions):
 
 ```bash
 pip install -r requirements.txt
-export FEED_URL="https://www.rcapitao.com/feed/"
+export FEED_URL="https://rcapitao.com/feed.xml"
 SEED_ONLY=1 python crosspost.py
 git add state.json
 git commit -m "Seed crosspost state with existing posts"
 git push
 ```
+
+> **Migrando a URL do feed:** sempre que `FEED_URL` mudar (ex.: troca de domínio ou de caminho do feed), repita este passo de seed antes de reativar o agendamento. Como o `state.json` é indexado pelo link de cada post (`entry.link`), se os links não mudarem o histórico continua reconhecido normalmente; o seed serve como garantia extra de que nenhum post já publicado antes da migração seja crosspostado de novo.
 
 ### 6. Ativar o workflow
 
