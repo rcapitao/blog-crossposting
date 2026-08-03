@@ -1,6 +1,6 @@
-# bearblog-crossposting
+# blog-crossposting
 
-Automação que crossposta novos posts do blog [rcapitao.com](https://www.rcapitao.com) (hospedado no Bear Blog) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
+Automação que crossposta novos posts do blog [rcapitao.com](https://rcapitao.com) (gerado com [Eleventy/11ty](https://www.11ty.dev/)) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
 
 ## Visão geral
 
@@ -12,7 +12,7 @@ A automação roda como um workflow agendado no GitHub Actions:
 4. Para cada post novo (do mais antigo para o mais recente), publica uma mensagem no Mastodon e no Bluesky.
 5. Atualiza `state.json` com os links recém-publicados e o workflow faz commit + push automático desse arquivo no repositório.
 
-Não há servidor rodando 24/7 nem webhook do Bear Blog — a detecção é feita por **polling** do feed RSS.
+Não há servidor rodando 24/7 nem webhook do gerador de site estático — a detecção é feita por **polling** do feed RSS.
 
 ## Formato da mensagem publicada
 
@@ -48,13 +48,13 @@ O Threads (Meta) não tem uma forma simples de publicar sem usar a API oficial d
 
 ### 1. Descobrir a URL do feed RSS
 
-O feed RSS deste blog está em `https://www.rcapitao.com/feed/`.
+O feed RSS deste blog está em `https://rcapitao.com/feed.xml`.
 
 ### 2. Criar o token do Mastodon
 
 1. Entre na sua instância Mastodon (web).
 2. Vá em **Preferências → Desenvolvimento → Nova aplicação**.
-3. Dê um nome (ex: `bearblog-crossposting`) e marque o scope `write:statuses`.
+3. Dê um nome (ex: `blog-crossposting`) e marque o scope `write:statuses`.
 4. Crie a aplicação e copie o **access token** gerado.
 5. Anote também a URL base da sua instância (ex: `https://mastodon.social`).
 
@@ -69,7 +69,7 @@ O feed RSS deste blog está em `https://www.rcapitao.com/feed/`.
 Em **Settings → Secrets and variables → Actions** deste repositório:
 
 **Variables** (não sensíveis):
-- `FEED_URL` — ex: `https://www.rcapitao.com/feed/`
+- `FEED_URL` — `https://rcapitao.com/feed.xml`
 - `MASTODON_BASE_URL` — ex: `https://mastodon.social`
 - `BLUESKY_HANDLE` — ex: `rcapitao.bsky.social`
 
@@ -93,12 +93,14 @@ Alternativa local (se preferir rodar fora do GitHub Actions):
 
 ```bash
 pip install -r requirements.txt
-export FEED_URL="https://www.rcapitao.com/feed/"
+export FEED_URL="https://rcapitao.com/feed.xml"
 SEED_ONLY=1 python crosspost.py
 git add state.json
 git commit -m "Seed crosspost state with existing posts"
 git push
 ```
+
+> **Migrando a URL do feed:** sempre que `FEED_URL` mudar (ex.: troca de domínio ou de caminho do feed), repita este passo de seed antes de reativar o agendamento. Como o `state.json` é indexado pelo link de cada post (`entry.link`), se os links não mudarem o histórico continua reconhecido normalmente; o seed serve como garantia extra de que nenhum post já publicado antes da migração seja crosspostado de novo.
 
 ### 6. Ativar o workflow
 
