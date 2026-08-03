@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crossposts new Bear Blog posts to Mastodon and Bluesky.
+"""Crossposts new blog posts to Mastodon and Bluesky.
 
 Reads the blog's RSS feed, compares it against a local state file of
 already-posted entries, and publishes any new posts to the configured

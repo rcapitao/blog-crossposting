@@ -1,6 +1,6 @@
-# bearblog-crossposting
+# blog-crossposting
 
-Automação que crossposta novos posts do blog [rcapitao.com](https://www.rcapitao.com) (hospedado no Bear Blog) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
+Automação que crossposta novos posts do blog [rcapitao.com](https://rcapitao.com) (gerado com [Eleventy/11ty](https://www.11ty.dev/)) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
 
 ## Visão geral
 
@@ -12,7 +12,7 @@ A automação roda como um workflow agendado no GitHub Actions:
 4. Para cada post novo (do mais antigo para o mais recente), publica uma mensagem no Mastodon e no Bluesky.
 5. Atualiza `state.json` com os links recém-publicados e o workflow faz commit + push automático desse arquivo no repositório.
 
-Não há servidor rodando 24/7 nem webhook do Bear Blog — a detecção é feita por **polling** do feed RSS.
+Não há servidor rodando 24/7 nem webhook do gerador de site estático — a detecção é feita por **polling** do feed RSS.
 
 ## Formato da mensagem publicada
 
@@ -54,7 +54,7 @@ O feed RSS deste blog está em `https://rcapitao.com/feed.xml`.
 
 1. Entre na sua instância Mastodon (web).
 2. Vá em **Preferências → Desenvolvimento → Nova aplicação**.
-3. Dê um nome (ex: `bearblog-crossposting`) e marque o scope `write:statuses`.
+3. Dê um nome (ex: `blog-crossposting`) e marque o scope `write:statuses`.
 4. Crie a aplicação e copie o **access token** gerado.
 5. Anote também a URL base da sua instância (ex: `https://mastodon.social`).
 
