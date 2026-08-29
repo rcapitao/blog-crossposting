@@ -111,7 +111,7 @@ Para o `rcapitao-vhugo` conseguir acionar este workflow assim que o deploy do bl
 
 1. Crie um **fine-grained personal access token** em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new):
    - **Repository access**: só o repositório `rcapitao/blog-crossposting`.
-   - **Permissions**: `Actions` → `Read and write`.
+   - **Permissions**: `Contents` → `Read and write` (é essa permissão que o endpoint `dispatches` da API do GitHub exige — não `Actions`).
    - Defina uma expiração (recomendado renovar periodicamente).
 2. No repositório `rcapitao/rcapitao-vhugo`, vá em **Settings → Secrets and variables → Actions → New repository secret** e crie o secret `CROSSPOST_DISPATCH_TOKEN` com o valor do token gerado.
 
