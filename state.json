@@ -675,6 +675,10 @@
     "bluesky": true,
     "mastodon": true
   },
+  "https://rcapitao.com/posts/teste-crossposting/": {
+    "bluesky": true,
+    "mastodon": true
+  },
   "https://rcapitao.com/posts/transferencia-internacional-e-tia/": {
     "bluesky": true,
     "mastodon": true
