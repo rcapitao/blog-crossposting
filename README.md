@@ -1,6 +1,6 @@
 # blog-crossposting
 
-Automação que crossposta novos posts do blog [rcapitao.com](https://rcapitao.com) (gerado com [Eleventy/11ty](https://www.11ty.dev/)) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
+Automação que crossposta novos posts do blog [rcapitao.com](https://rcapitao.com) (gerado com [Hugo](https://gohugo.io/), fonte em [rcapitao/rcapitao-vhugo](https://github.com/rcapitao/rcapitao-vhugo)) para o **Mastodon** e o **Bluesky**, lendo o feed RSS do blog.
 
 ## Visão geral
 
@@ -26,6 +26,7 @@ Meta description do post
 - Há uma linha em branco entre o título/link e a meta description.
 - A meta description é extraída do campo `summary`/`description` do RSS (com tags HTML removidas).
 - Se o post não tiver meta description, é usado o conteúdo completo do post (campo `content` do RSS, com tags HTML removidas) na segunda parte da mensagem.
+- A mensagem é truncada (com reticências `…`) para caber no limite de cada rede: 480 caracteres para o Mastodon, 290 para o Bluesky. Isso é necessário porque o RSS do blog inclui o conteúdo completo do post na descrição, não um resumo curto.
 - No Bluesky, o link na primeira linha é publicado como link clicável (rich text facet), não como texto simples.
 - No Bluesky, o post também inclui um card de preview do link (imagem `og:image` da página do post, título e descrição), igual ao que aparece ao colar um link manualmente. Se a página não tiver `og:image`, o post é publicado sem o card.
 - Se o post não tiver meta description nem conteúdo, só é publicada a primeira linha.
@@ -38,7 +39,7 @@ Meta description do post
 | Bluesky | ✅ | App Password (AT Protocol) |
 | Threads | ❌ (por agora) | — |
 
-Cada rede é independente: se as variáveis/secrets de uma rede não estiverem definidas, o script simplesmente ignora essa rede e publica só nas demais (veja `post_to_mastodon` e `post_to_bluesky` em `crosspost.py`).
+Cada rede é independente: se as variáveis/secrets de uma rede não estiverem definidas, o script simplesmente ignora essa rede e publica só nas demais. Mais importante ainda: o progresso de publicação é rastreado **por rede** em `state.json` (não é "tudo ou nada"). Se a publicação no Mastodon tiver sucesso mas a do Bluesky falhar, a próxima execução tenta de novo **só o Bluesky** — o post não é republicado no Mastodon.
 
 ### Sobre o Threads
 
@@ -111,8 +112,8 @@ O workflow `.github/workflows/crosspost.yml` já roda automaticamente a cada 30 
 - **Publicar um post novo no blog** já é suficiente — na próxima execução agendada (até 30 min depois, dentro do intervalo das 08h-23h) o workflow detecta e crossposta automaticamente. Se publicar fora desse intervalo, a postagem é detectada na primeira execução após as 08h.
 - **Forçar uma verificação imediata**: **Actions → Crosspost new blog posts → Run workflow** (sem marcar `seed_only`).
 - **Ver o histórico de execuções e logs**: aba **Actions** do repositório.
-- **Confirmar o que já foi publicado**: arquivo `state.json` na raiz do repositório (lista de links já crosspostados).
-- **Reenviar um post manualmente**: remova o link correspondente de `state.json`, faça commit/push, e execute o workflow manualmente — o post volta a ser tratado como novo.
+- **Confirmar o que já foi publicado**: arquivo `state.json` na raiz do repositório. Cada link aponta para um objeto indicando em quais redes já foi publicado, ex.: `{"https://rcapitao.com/posts/exemplo/": {"mastodon": true, "bluesky": true}}`.
+- **Reenviar um post manualmente**: remova a entrada correspondente de `state.json` (ou só a chave da rede específica, ex. `"bluesky": true`, para reenviar somente naquela rede), faça commit/push, e execute o workflow manualmente — o post volta a ser tratado como pendente.
 - **Desativar temporariamente**: em **Settings → Actions → General**, desative as Actions do repositório, ou remova/comente o gatilho `schedule` no workflow.
 
 ## Troubleshooting
@@ -120,12 +121,13 @@ O workflow `.github/workflows/crosspost.yml` já roda automaticamente a cada 30 
 - **Nada é publicado**: confirme que `FEED_URL` está correto e acessível publicamente, e que pelo menos um par de credenciais (Mastodon ou Bluesky) está configurado nas secrets/variables.
 - **Erro de autenticação no Mastodon**: o access token pode ter expirado ou não ter o scope `write:statuses` — gere um novo token.
 - **Erro de autenticação no Bluesky**: confirme que `BLUESKY_HANDLE` é o handle completo (ex: `rcapitao.bsky.social`) e que `BLUESKY_APP_PASSWORD` é um App Password válido (não a senha da conta).
-- **Posts antigos foram crosspostados de repente**: provavelmente o `state.json` foi perdido ou nunca foi seedado — repita o passo de seed inicial.
+- **Posts antigos foram crosspostados de repente**: provavelmente o `state.json` foi perdido ou nunca foi seedado — repita o passo de seed inicial. Isso também acontece se o blog migrar de gerador/domínio e as URLs dos posts mudarem (o `state.json` é indexado por URL) — repita o seed depois de qualquer migração.
+- **O mesmo post é publicado repetidamente no Mastodon (ou Bluesky) a cada execução**: isso era um bug conhecido (corrigido em agosto/2026) em que uma falha em uma rede fazia o post inteiro ser retentado, republicando na rede que já tinha tido sucesso. Hoje o progresso é rastreado por rede em `state.json`, então isso não deve mais acontecer — se acontecer, verifique se `state.json` está sendo commitado corretamente a cada execução (passo "Commit updated state" do workflow).
 - **O workflow falha ao fazer commit do `state.json`**: confirme que a permissão `contents: write` está definida no workflow (já está por padrão neste repositório) e que não há proteção de branch bloqueando pushes diretos do `github-actions[bot]`.
 
 ## Estrutura
 
 - `crosspost.py` — script principal: lê o feed, decide o que é novo, publica e atualiza o estado.
 - `requirements.txt` — dependências Python (`feedparser`, `requests`).
-- `state.json` — registro dos posts já crosspostados (atualizado automaticamente pelo workflow).
+- `state.json` — registro de quais posts já foram crosspostados em cada rede (`{"url": {"mastodon": true, "bluesky": true}}`), atualizado automaticamente pelo workflow.
 - `.github/workflows/crosspost.yml` — workflow agendado do GitHub Actions, com gatilho `schedule` e `workflow_dispatch` (incluindo a opção `seed_only`).
