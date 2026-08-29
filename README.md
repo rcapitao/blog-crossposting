@@ -4,15 +4,17 @@ Automação que crossposta novos posts do blog [rcapitao.com](https://rcapitao.c
 
 ## Visão geral
 
-A automação roda como um workflow agendado no GitHub Actions:
+A automação é orientada a evento, com um polling esporádico como rede de segurança:
 
-1. A cada 30 minutos, das 08h às 23h no horário de Brasília (ou manualmente), o workflow `.github/workflows/crosspost.yml` inicia uma máquina temporária, instala as dependências Python e executa `crosspost.py`. Fora desse intervalo (23h-08h) o workflow não roda, para não gerar execuções à toa de madrugada.
-2. `crosspost.py` lê o feed RSS configurado em `FEED_URL`.
-3. Compara os links dos posts do feed com os já registrados em `state.json` (o "registro do que já foi publicado").
-4. Para cada post novo (do mais antigo para o mais recente), publica uma mensagem no Mastodon e no Bluesky.
-5. Atualiza `state.json` com os links recém-publicados e o workflow faz commit + push automático desse arquivo no repositório.
+1. Quando um post novo é publicado, o workflow de deploy do blog ([`rcapitao/rcapitao-vhugo`](https://github.com/rcapitao/rcapitao-vhugo), `.github/workflows/hugo.yml`) termina de publicar o site no GitHub Pages e, no último step, dispara um evento `repository_dispatch` (`blog-published`) para este repositório.
+2. Isso aciona imediatamente o workflow `.github/workflows/crosspost.yml` aqui, que instala as dependências Python e executa `crosspost.py`.
+3. Como rede de segurança, o mesmo workflow também roda por `schedule` a cada 3h (08h-23h horário de Brasília), caso o disparo do passo 1 falhe por algum motivo (token expirado, erro de rede, etc.). Também pode ser disparado manualmente.
+4. `crosspost.py` lê o feed RSS configurado em `FEED_URL`.
+5. Compara os links dos posts do feed com os já registrados em `state.json` (o "registro do que já foi publicado").
+6. Para cada post novo (do mais antigo para o mais recente), publica uma mensagem no Mastodon e no Bluesky.
+7. Atualiza `state.json` com os links recém-publicados e o workflow faz commit + push automático desse arquivo no repositório.
 
-Não há servidor rodando 24/7 nem webhook do gerador de site estático — a detecção é feita por **polling** do feed RSS.
+Não há servidor rodando 24/7 — a detecção é orientada a evento (`repository_dispatch` do repositório do blog), com **polling** esporádico do feed RSS como rede de segurança.
 
 ## Formato da mensagem publicada
 
@@ -103,18 +105,30 @@ git push
 
 > **Migrando a URL do feed:** sempre que `FEED_URL` mudar (ex.: troca de domínio ou de caminho do feed), repita este passo de seed antes de reativar o agendamento. Como o `state.json` é indexado pelo link de cada post (`entry.link`), se os links não mudarem o histórico continua reconhecido normalmente; o seed serve como garantia extra de que nenhum post já publicado antes da migração seja crosspostado de novo.
 
-### 6. Ativar o workflow
+### 6. Configurar o disparo instantâneo (repository_dispatch)
 
-O workflow `.github/workflows/crosspost.yml` já roda automaticamente a cada 30 minutos, das 08h às 23h (horário de Brasília), depois do push para `main`. Você também pode disparar manualmente em **Actions → Crosspost new blog posts → Run workflow**.
+Para o `rcapitao-vhugo` conseguir acionar este workflow assim que o deploy do blog terminar, ele precisa de um token com permissão de escrever Actions neste repositório (o `GITHUB_TOKEN` padrão de um workflow só tem acesso ao próprio repositório onde roda).
+
+1. Crie um **fine-grained personal access token** em [github.com/settings/personal-access-tokens](https://github.com/settings/personal-access-tokens/new):
+   - **Repository access**: só o repositório `rcapitao/blog-crossposting`.
+   - **Permissions**: `Actions` → `Read and write`.
+   - Defina uma expiração (recomendado renovar periodicamente).
+2. No repositório `rcapitao/rcapitao-vhugo`, vá em **Settings → Secrets and variables → Actions → New repository secret** e crie o secret `CROSSPOST_DISPATCH_TOKEN` com o valor do token gerado.
+
+Sem esse secret configurado, o step `Notify crosspost` do `hugo.yml` falha (o deploy do site em si não é afetado) e a automação cai para o polling de 3h como único gatilho, até o secret ser configurado.
+
+### 7. Ativar o workflow
+
+O workflow `.github/workflows/crosspost.yml` já é acionado automaticamente pelo `repository_dispatch` do blog e roda como rede de segurança a cada 3h, das 08h às 23h (horário de Brasília), depois do push para `main`. Você também pode disparar manualmente em **Actions → Crosspost new blog posts → Run workflow**.
 
 ## Operação no dia a dia
 
-- **Publicar um post novo no blog** já é suficiente — na próxima execução agendada (até 30 min depois, dentro do intervalo das 08h-23h) o workflow detecta e crossposta automaticamente. Se publicar fora desse intervalo, a postagem é detectada na primeira execução após as 08h.
+- **Publicar um post novo no blog** já é suficiente — assim que o deploy do `rcapitao-vhugo` terminar, o `repository_dispatch` aciona o crosspost quase imediatamente. Se o disparo falhar por algum motivo, o polling de 3h (08h-23h) pega o post depois.
 - **Forçar uma verificação imediata**: **Actions → Crosspost new blog posts → Run workflow** (sem marcar `seed_only`).
-- **Ver o histórico de execuções e logs**: aba **Actions** do repositório.
+- **Ver o histórico de execuções e logs**: aba **Actions** do repositório. Execuções disparadas pelo blog aparecem com o evento `repository_dispatch`.
 - **Confirmar o que já foi publicado**: arquivo `state.json` na raiz do repositório. Cada link aponta para um objeto indicando em quais redes já foi publicado, ex.: `{"https://rcapitao.com/posts/exemplo/": {"mastodon": true, "bluesky": true}}`.
 - **Reenviar um post manualmente**: remova a entrada correspondente de `state.json` (ou só a chave da rede específica, ex. `"bluesky": true`, para reenviar somente naquela rede), faça commit/push, e execute o workflow manualmente — o post volta a ser tratado como pendente.
-- **Desativar temporariamente**: em **Settings → Actions → General**, desative as Actions do repositório, ou remova/comente o gatilho `schedule` no workflow.
+- **Desativar temporariamente**: em **Settings → Actions → General**, desative as Actions do repositório, ou remova/comente os gatilhos `repository_dispatch`/`schedule` no workflow.
 
 ## Troubleshooting
 
@@ -124,10 +138,11 @@ O workflow `.github/workflows/crosspost.yml` já roda automaticamente a cada 30 
 - **Posts antigos foram crosspostados de repente**: provavelmente o `state.json` foi perdido ou nunca foi seedado — repita o passo de seed inicial. Isso também acontece se o blog migrar de gerador/domínio e as URLs dos posts mudarem (o `state.json` é indexado por URL) — repita o seed depois de qualquer migração.
 - **O mesmo post é publicado repetidamente no Mastodon (ou Bluesky) a cada execução**: isso era um bug conhecido (corrigido em agosto/2026) em que uma falha em uma rede fazia o post inteiro ser retentado, republicando na rede que já tinha tido sucesso. Hoje o progresso é rastreado por rede em `state.json`, então isso não deve mais acontecer — se acontecer, verifique se `state.json` está sendo commitado corretamente a cada execução (passo "Commit updated state" do workflow).
 - **O workflow falha ao fazer commit do `state.json`**: confirme que a permissão `contents: write` está definida no workflow (já está por padrão neste repositório) e que não há proteção de branch bloqueando pushes diretos do `github-actions[bot]`.
+- **O crosspost não roda logo depois de publicar um post**: verifique se o secret `CROSSPOST_DISPATCH_TOKEN` está configurado no `rcapitao-vhugo` e não expirou, e se o step `Notify crosspost` do `hugo.yml` terminou com sucesso na aba Actions daquele repositório. Enquanto isso não estiver funcionando, o post ainda é detectado pelo polling de 3h.
 
 ## Estrutura
 
 - `crosspost.py` — script principal: lê o feed, decide o que é novo, publica e atualiza o estado.
 - `requirements.txt` — dependências Python (`feedparser`, `requests`).
 - `state.json` — registro de quais posts já foram crosspostados em cada rede (`{"url": {"mastodon": true, "bluesky": true}}`), atualizado automaticamente pelo workflow.
-- `.github/workflows/crosspost.yml` — workflow agendado do GitHub Actions, com gatilho `schedule` e `workflow_dispatch` (incluindo a opção `seed_only`).
+- `.github/workflows/crosspost.yml` — workflow do GitHub Actions, com gatilhos `repository_dispatch` (disparo instantâneo pelo blog), `schedule` (rede de segurança) e `workflow_dispatch` (incluindo a opção `seed_only`).
