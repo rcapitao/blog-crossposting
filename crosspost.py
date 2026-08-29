@@ -20,31 +20,49 @@ FEED_URL = os.environ["FEED_URL"]
 
 MASTODON_BASE_URL = os.environ.get("MASTODON_BASE_URL")
 MASTODON_ACCESS_TOKEN = os.environ.get("MASTODON_ACCESS_TOKEN")
+MASTODON_MESSAGE_LIMIT = 480
 
 BLUESKY_HANDLE = os.environ.get("BLUESKY_HANDLE")
 BLUESKY_APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD")
+BLUESKY_MESSAGE_LIMIT = 290
+
+NETWORKS = []
+if MASTODON_BASE_URL and MASTODON_ACCESS_TOKEN:
+    NETWORKS.append("mastodon")
+if BLUESKY_HANDLE and BLUESKY_APP_PASSWORD:
+    NETWORKS.append("bluesky")
 
 
-def load_state() -> set:
-    if STATE_FILE.exists():
-        return set(json.loads(STATE_FILE.read_text()))
-    return set()
+def load_state() -> dict:
+    if not STATE_FILE.exists():
+        return {}
+    raw = json.loads(STATE_FILE.read_text())
+    if isinstance(raw, list):
+        # Legacy format: flat list of links that were fully crossposted.
+        return {link: {"mastodon": True, "bluesky": True} for link in raw}
+    return raw
 
 
-def save_state(posted_ids: set) -> None:
-    STATE_FILE.write_text(json.dumps(sorted(posted_ids), indent=2) + "\n")
+def save_state(state: dict) -> None:
+    STATE_FILE.write_text(
+        json.dumps(state, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    )
 
 
-def fetch_new_entries(posted_ids: set):
+def pending_networks(entry, state: dict) -> list:
+    done = state.get(entry.link, {})
+    return [network for network in NETWORKS if not done.get(network)]
+
+
+def fetch_pending_entries(state: dict):
     feed = feedparser.parse(FEED_URL)
     if feed.bozo and not feed.entries:
         raise RuntimeError(f"Failed to parse feed: {feed.bozo_exception}")
 
-    new_entries = [
-        entry for entry in feed.entries if entry.link not in posted_ids
-    ]
+    pending = [(entry, pending_networks(entry, state)) for entry in feed.entries]
+    pending = [(entry, networks) for entry, networks in pending if networks]
     # Oldest first, so posting order matches publish order.
-    return list(reversed(new_entries))
+    return list(reversed(pending))
 
 
 def get_meta_description(entry) -> str:
@@ -58,19 +76,31 @@ def get_meta_description(entry) -> str:
     return re.sub(r"<[^>]+>", "", content).strip()
 
 
-def build_message(entry) -> str:
+def truncate(text: str, limit: int) -> str:
+    if len(text) <= limit:
+        return text
+    truncated = text[: limit - 1].rstrip()
+    if " " in truncated:
+        truncated = truncated.rsplit(" ", 1)[0]
+    return truncated.rstrip() + "…"
+
+
+def build_message(entry, limit: int) -> str:
     first_line = f"{entry.title}: {entry.link}"
+    if len(first_line) >= limit:
+        return first_line[:limit]
+
     description = get_meta_description(entry)
     if not description:
         return first_line
-    return f"{first_line}\n\n{description}"
+
+    available = limit - len(first_line) - 2  # blank line separator
+    if available <= 0:
+        return first_line
+    return f"{first_line}\n\n{truncate(description, available)}"
 
 
 def post_to_mastodon(message: str) -> None:
-    if not (MASTODON_BASE_URL and MASTODON_ACCESS_TOKEN):
-        print("Mastodon not configured, skipping.")
-        return
-
     response = requests.post(
         f"{MASTODON_BASE_URL}/api/v1/statuses",
         headers={"Authorization": f"Bearer {MASTODON_ACCESS_TOKEN}"},
@@ -146,10 +176,6 @@ def build_bluesky_embed(session: dict, entry, description: str) -> dict | None:
 
 
 def post_to_bluesky(entry, message: str) -> None:
-    if not (BLUESKY_HANDLE and BLUESKY_APP_PASSWORD):
-        print("Bluesky not configured, skipping.")
-        return
-
     session = bluesky_login()
 
     import datetime
@@ -192,32 +218,46 @@ def post_to_bluesky(entry, message: str) -> None:
     print("Posted to Bluesky.")
 
 
-def main() -> int:
-    posted_ids = load_state()
-    new_entries = fetch_new_entries(posted_ids)
+def crosspost(entry, network: str) -> None:
+    if network == "mastodon":
+        post_to_mastodon(build_message(entry, MASTODON_MESSAGE_LIMIT))
+    elif network == "bluesky":
+        post_to_bluesky(entry, build_message(entry, BLUESKY_MESSAGE_LIMIT))
 
-    if not new_entries:
+
+def main() -> int:
+    state = load_state()
+    pending = fetch_pending_entries(state)
+
+    if not pending:
         print("No new posts.")
         return 0
 
     if os.environ.get("SEED_ONLY") == "1":
-        print(f"Seeding state with {len(new_entries)} existing post(s), not posting.")
-        posted_ids.update(entry.link for entry in new_entries)
-        save_state(posted_ids)
+        print(f"Seeding state with {len(pending)} existing post(s), not posting.")
+        for entry, networks in pending:
+            done = state.setdefault(entry.link, {})
+            for network in networks:
+                done[network] = True
+        save_state(state)
         return 0
 
-    for entry in new_entries:
-        message = build_message(entry)
+    for entry, networks in pending:
         print(f"Crossposting: {entry.title}")
-        try:
-            post_to_mastodon(message)
-            post_to_bluesky(entry, message)
-        except requests.HTTPError as exc:
-            print(f"Failed to crosspost '{entry.title}': {exc}", file=sys.stderr)
-            continue
-        posted_ids.add(entry.link)
+        done = state.setdefault(entry.link, {})
+        for network in networks:
+            try:
+                crosspost(entry, network)
+                done[network] = True
+            except requests.HTTPError as exc:
+                print(
+                    f"Failed to crosspost '{entry.title}' to {network}: {exc}",
+                    file=sys.stderr,
+                )
+        # Save after every entry so a partial success (e.g. Mastodon posted
+        # but Bluesky failed) is never retried on the next run.
+        save_state(state)
 
-    save_state(posted_ids)
     return 0
 
 

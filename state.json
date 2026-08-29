@@ -1,106 +1,722 @@
-[
-  "https://rcapitao.com/auditoria-de-privacidade-nao-e-ameaca/",
-  "https://rcapitao.com/bearblog-backup-and-crossposting-en/",
-  "https://rcapitao.com/bearblog-backup-crossposting-ptbr/",
-  "https://rcapitao.com/bearblog-backup-e-crossposting/",
-  "https://rcapitao.com/blog/5-habitos-para-mais-privacidade/",
-  "https://rcapitao.com/blog/5-mitos-sobre-privacidade/",
-  "https://rcapitao.com/blog/a-senha-do-louvre-era-louvre/",
-  "https://rcapitao.com/blog/acessibilidade-em-dashboards/",
-  "https://rcapitao.com/blog/alertas-de-privacidade-no-iphone/",
-  "https://rcapitao.com/blog/anonimizar-nao-resolve-tudo/",
-  "https://rcapitao.com/blog/auditoria-de-privacidade-nao-e-ameaca/",
-  "https://rcapitao.com/blog/barreiras-a-privacidade-nas-empresas/",
-  "https://rcapitao.com/blog/bases-legais-na-lgpd/",
-  "https://rcapitao.com/blog/certificacoes-de-privacidade/",
-  "https://rcapitao.com/blog/como-desativar-o-compartilhamento-de-dados-para-ia-no-linkedin/",
-  "https://rcapitao.com/blog/como-estruturar-um-programa-de-privacidade/",
-  "https://rcapitao.com/blog/como-explicar-o-que-eu-faco/",
-  "https://rcapitao.com/blog/conformidade-global-em-privacidade/",
-  "https://rcapitao.com/blog/criptomoedas-sem-privacidade/",
-  "https://rcapitao.com/blog/cuidado-com-dados-na-ia/",
-  "https://rcapitao.com/blog/dados-sao-uma-moeda/",
-  "https://rcapitao.com/blog/e-mails-mascarados/",
-  "https://rcapitao.com/blog/entendendo-os-metadados/",
-  "https://rcapitao.com/blog/escolher-as-nossas-pessoas/",
-  "https://rcapitao.com/blog/escolher-as-pessoas-certas/",
-  "https://rcapitao.com/blog/estruture-seu-programa-de-privacidade/",
-  "https://rcapitao.com/blog/fadiga-da-biometria/",
-  "https://rcapitao.com/blog/frameworks-de-privacidade/",
-  "https://rcapitao.com/blog/gerenciadores-de-senhas/",
-  "https://rcapitao.com/blog/golpe-silencioso-de-ia/",
-  "https://rcapitao.com/blog/governanca-de-privacidade/",
-  "https://rcapitao.com/blog/guias-de-privacidade/",
-  "https://rcapitao.com/blog/ia-produto-ou-servico/",
-  "https://rcapitao.com/blog/identificar-cookies-nos-sites/",
-  "https://rcapitao.com/blog/impossible-is-nothing/",
-  "https://rcapitao.com/blog/ligacoes-de-golpe-sem-fim/",
-  "https://rcapitao.com/blog/linkedin-realiza-varreduras-secretas-no-chrome/",
-  "https://rcapitao.com/blog/livros-notaveis-sobre-privacidade-protecao-de-dados-de-2025/",
-  "https://rcapitao.com/blog/mapeie-os-dados-da-sua-empresa/",
-  "https://rcapitao.com/blog/mascarando-o-gmail-sem-custo/",
-  "https://rcapitao.com/blog/mitos-sobre-a-lgpd-no-brasil/",
-  "https://rcapitao.com/blog/monitoramento-e-auditoria/",
-  "https://rcapitao.com/blog/nada-a-esconder-tudo-a-proteger/",
-  "https://rcapitao.com/blog/novas-capas-para-a-newsletter-privacy-rocks/",
-  "https://rcapitao.com/blog/o-celular-rouba-o-silencio/",
-  "https://rcapitao.com/blog/o-chato-da-privacidade/",
-  "https://rcapitao.com/blog/o-programa-de-privacidade-nao-termina-na-implementacao/",
-  "https://rcapitao.com/blog/o-que-o-zero-day-nos-ensina/",
-  "https://rcapitao.com/blog/o-teatro-dos-banners-de-cookies/",
-  "https://rcapitao.com/blog/o-truque-do-infravermelho-para-achar-cameras-ocultas/",
-  "https://rcapitao.com/blog/onde-a-privacidade-deve-ficar/",
-  "https://rcapitao.com/blog/os-riscos-por-tras-do-qr-code/",
-  "https://rcapitao.com/blog/padroes-obscuros-de-privacidade/",
-  "https://rcapitao.com/blog/parei-de-usar-o-x/",
-  "https://rcapitao.com/blog/pay-or-ok-escolha-forcada/",
-  "https://rcapitao.com/blog/pequenas-e-medias-empresas-tambem-precisam-se-adequar-a-lgpd/",
-  "https://rcapitao.com/blog/politica-x-aviso-de-privacidade/",
-  "https://rcapitao.com/blog/politicas-feitas-para-nao-ler/",
-  "https://rcapitao.com/blog/privacidade-abstrata/",
-  "https://rcapitao.com/blog/privacidade-como-negocio/",
-  "https://rcapitao.com/blog/privacidade-desde-a-concepcao/",
-  "https://rcapitao.com/blog/privacidade-e-gestao-de-fornecedores/",
-  "https://rcapitao.com/blog/privacidade-em-linguagem-clara/",
-  "https://rcapitao.com/blog/privacidade-seguranca-e-anonimato/",
-  "https://rcapitao.com/blog/privacidade-sem-fronteiras/",
-  "https://rcapitao.com/blog/privacidade-sem-travar-projetos/",
-  "https://rcapitao.com/blog/privacy-guides/",
-  "https://rcapitao.com/blog/privacy-washing/",
-  "https://rcapitao.com/blog/produtividade-com-gtd-um-metodo-que-transforma-minha-rotina/",
-  "https://rcapitao.com/blog/proteja-documentos-enviados/",
-  "https://rcapitao.com/blog/quando-a-privacidade-nao-e-so-sua/",
-  "https://rcapitao.com/blog/quando-filhos-viram-conteudo/",
-  "https://rcapitao.com/blog/quando-o-dado-pessoal-vaza/",
-  "https://rcapitao.com/blog/rastreamento-alem-dos-cookies/",
-  "https://rcapitao.com/blog/resistencia-cultural-e-o-maior-desafio-da-privacidade/",
-  "https://rcapitao.com/blog/se-nao-paga-voce-e-o-produto/",
-  "https://rcapitao.com/blog/seguranca-e-privacidade-se-complementam-mas-nao-se-confundem/",
-  "https://rcapitao.com/blog/seguranca-privacidade-e-dados/",
-  "https://rcapitao.com/blog/sharenting-o-risco-de-expor-seus-filhos-online/",
-  "https://rcapitao.com/blog/sua-ia-usa-seus-dados/",
-  "https://rcapitao.com/blog/teste-tres/",
-  "https://rcapitao.com/blog/transferencia-internacional-e-tia/",
-  "https://rcapitao.com/blog/treinamento-de-privacidade-que-funciona/",
-  "https://rcapitao.com/blog/ublock-origin-e-obrigatorio/",
-  "https://rcapitao.com/blog/ublock-origin-e-privacidade/",
-  "https://rcapitao.com/blog/vazamento-de-dados-e-o-stj/",
-  "https://rcapitao.com/como-desativar-o-compartilhamento-de-dados-para-ia-no-linkedin/",
-  "https://rcapitao.com/contato/",
-  "https://rcapitao.com/linkedin-realiza-varreduras-secretas-no-chrome/",
-  "https://rcapitao.com/nada-a-esconder-tudo-a-proteger/",
-  "https://rcapitao.com/novas-capas-para-a-newsletter-privacy-rocks/",
-  "https://rcapitao.com/o-truque-do-infravermelho-para-achar-cameras-ocultas/",
-  "https://rcapitao.com/parei-de-usar-o-x/",
-  "https://rcapitao.com/posts/dados-sao-uma-moeda/",
-  "https://rcapitao.com/posts/livros-notaveis-sobre-privacidade-protecao-de-dados-de-2025/",
-  "https://rcapitao.com/posts/o-chato-da-privacidade/",
-  "https://rcapitao.com/posts/se-nao-paga-voce-e-o-produto/",
-  "https://rcapitao.com/posts/ublock-origin-e-obrigatorio/",
-  "https://rcapitao.com/produtividade-com-gtd-um-metodo-que-transforma-minha-rotina/",
-  "https://rcapitao.com/resistencia-cultural-e-o-maior-desafio-da-privacidade/",
-  "https://rcapitao.com/social/",
-  "https://rcapitao.com/test-crossposting/",
-  "https://rcapitao.com/teste-crossposting2/",
-  "https://rcapitao.com/ublock-origin-e-obrigatorio/"
-]
+{
+  "https://rcapitao.com/auditoria-de-privacidade-nao-e-ameaca/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/bearblog-backup-and-crossposting-en/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/bearblog-backup-crossposting-ptbr/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/bearblog-backup-e-crossposting/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/5-habitos-para-mais-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/5-mitos-sobre-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/a-senha-do-louvre-era-louvre/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/acessibilidade-em-dashboards/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/alertas-de-privacidade-no-iphone/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/anonimizar-nao-resolve-tudo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/auditoria-de-privacidade-nao-e-ameaca/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/barreiras-a-privacidade-nas-empresas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/bases-legais-na-lgpd/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/certificacoes-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/como-desativar-o-compartilhamento-de-dados-para-ia-no-linkedin/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/como-estruturar-um-programa-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/como-explicar-o-que-eu-faco/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/conformidade-global-em-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/criptomoedas-sem-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/cuidado-com-dados-na-ia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/dados-sao-uma-moeda/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/e-mails-mascarados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/entendendo-os-metadados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/escolher-as-nossas-pessoas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/escolher-as-pessoas-certas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/estruture-seu-programa-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/fadiga-da-biometria/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/frameworks-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/gerenciadores-de-senhas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/golpe-silencioso-de-ia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/governanca-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/guias-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/ia-produto-ou-servico/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/identificar-cookies-nos-sites/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/impossible-is-nothing/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/ligacoes-de-golpe-sem-fim/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/linkedin-realiza-varreduras-secretas-no-chrome/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/livros-notaveis-sobre-privacidade-protecao-de-dados-de-2025/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/mapeie-os-dados-da-sua-empresa/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/mascarando-o-gmail-sem-custo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/mitos-sobre-a-lgpd-no-brasil/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/monitoramento-e-auditoria/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/nada-a-esconder-tudo-a-proteger/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/novas-capas-para-a-newsletter-privacy-rocks/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-celular-rouba-o-silencio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-chato-da-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-programa-de-privacidade-nao-termina-na-implementacao/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-que-o-zero-day-nos-ensina/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-teatro-dos-banners-de-cookies/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/o-truque-do-infravermelho-para-achar-cameras-ocultas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/onde-a-privacidade-deve-ficar/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/os-riscos-por-tras-do-qr-code/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/padroes-obscuros-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/parei-de-usar-o-x/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/pay-or-ok-escolha-forcada/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/pequenas-e-medias-empresas-tambem-precisam-se-adequar-a-lgpd/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/politica-x-aviso-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/politicas-feitas-para-nao-ler/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-abstrata/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-como-negocio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-desde-a-concepcao/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-e-gestao-de-fornecedores/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-em-linguagem-clara/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-seguranca-e-anonimato/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-sem-fronteiras/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacidade-sem-travar-projetos/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacy-guides/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/privacy-washing/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/produtividade-com-gtd-um-metodo-que-transforma-minha-rotina/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/proteja-documentos-enviados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/quando-a-privacidade-nao-e-so-sua/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/quando-filhos-viram-conteudo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/quando-o-dado-pessoal-vaza/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/rastreamento-alem-dos-cookies/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/resistencia-cultural-e-o-maior-desafio-da-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/se-nao-paga-voce-e-o-produto/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/seguranca-e-privacidade-se-complementam-mas-nao-se-confundem/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/seguranca-privacidade-e-dados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/sharenting-o-risco-de-expor-seus-filhos-online/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/sua-ia-usa-seus-dados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/teste-tres/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/transferencia-internacional-e-tia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/treinamento-de-privacidade-que-funciona/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/ublock-origin-e-obrigatorio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/ublock-origin-e-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/blog/vazamento-de-dados-e-o-stj/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/como-desativar-o-compartilhamento-de-dados-para-ia-no-linkedin/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/contato/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/linkedin-realiza-varreduras-secretas-no-chrome/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/nada-a-esconder-tudo-a-proteger/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/novas-capas-para-a-newsletter-privacy-rocks/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/o-truque-do-infravermelho-para-achar-cameras-ocultas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/parei-de-usar-o-x/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/5-habitos-para-mais-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/5-mitos-sobre-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/a-senha-do-louvre-era-louvre/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/acessibilidade-em-dashboards/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/alertas-de-privacidade-no-iphone/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/anonimizar-nao-resolve-tudo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/auditoria-de-privacidade-nao-e-ameaca/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/barreiras-a-privacidade-nas-empresas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/bases-legais-na-lgpd/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/certificacoes-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/como-desativar-o-compartilhamento-de-dados-para-ia-no-linkedin/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/como-estruturar-um-programa-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/como-explicar-o-que-eu-faco/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/conformidade-global-em-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/criptomoedas-sem-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/cuidado-com-dados-na-ia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/dados-sao-uma-moeda/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/e-mails-mascarados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/entendendo-os-metadados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/escolher-as-nossas-pessoas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/escolher-as-pessoas-certas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/estruture-seu-programa-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/fadiga-da-biometria/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/frameworks-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/gerenciadores-de-senhas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/golpe-silencioso-de-ia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/governanca-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/guias-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/ia-produto-ou-servico/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/identificar-cookies-nos-sites/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/impossible-is-nothing/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/ligacoes-de-golpe-sem-fim/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/linkedin-realiza-varreduras-secretas-no-chrome/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/livros-notaveis-sobre-privacidade-protecao-de-dados-de-2025/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/mapeie-os-dados-da-sua-empresa/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/mascarando-o-gmail-sem-custo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/mitos-sobre-a-lgpd-no-brasil/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/monitoramento-e-auditoria/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/nada-a-esconder-tudo-a-proteger/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/novas-capas-para-a-newsletter-privacy-rocks/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-celular-rouba-o-silencio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-chato-da-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-programa-de-privacidade-nao-termina-na-implementacao/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-que-o-zero-day-nos-ensina/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-teatro-dos-banners-de-cookies/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/o-truque-do-infravermelho-para-achar-cameras-ocultas/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/onde-a-privacidade-deve-ficar/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/os-riscos-por-tras-do-qr-code/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/padroes-obscuros-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/parei-de-usar-o-x/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/pay-or-ok-escolha-forcada/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/pequenas-e-medias-empresas-tambem-precisam-se-adequar-a-lgpd/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/politica-x-aviso-de-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/politicas-feitas-para-nao-ler/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-abstrata/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-como-negocio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-desde-a-concepcao/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-e-gestao-de-fornecedores/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-em-linguagem-clara/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-seguranca-e-anonimato/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-sem-fronteiras/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacidade-sem-travar-projetos/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacy-guides/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/privacy-washing/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/produtividade-com-gtd-um-metodo-que-transforma-minha-rotina/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/proteja-documentos-enviados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/quando-a-privacidade-nao-e-so-sua/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/quando-filhos-viram-conteudo/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/quando-o-dado-pessoal-vaza/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/rastreamento-alem-dos-cookies/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/resistencia-cultural-e-o-maior-desafio-da-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/se-nao-paga-voce-e-o-produto/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/seguranca-e-privacidade-se-complementam-mas-nao-se-confundem/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/seguranca-privacidade-e-dados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/sharenting-o-risco-de-expor-seus-filhos-online/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/sua-ia-usa-seus-dados/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/transferencia-internacional-e-tia/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/treinamento-de-privacidade-que-funciona/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/ublock-origin-e-obrigatorio/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/ublock-origin-e-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/posts/vazamento-de-dados-e-o-stj/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/produtividade-com-gtd-um-metodo-que-transforma-minha-rotina/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/resistencia-cultural-e-o-maior-desafio-da-privacidade/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/social/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/test-crossposting/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/teste-crossposting2/": {
+    "bluesky": true,
+    "mastodon": true
+  },
+  "https://rcapitao.com/ublock-origin-e-obrigatorio/": {
+    "bluesky": true,
+    "mastodon": true
+  }
+}

@@ -1,14 +1,9 @@
 name: Crosspost new blog posts
 
 on:
-  # Agendamento PAUSADO temporariamente (2026-08-29): a migração para o 11ty mudou
-  # as URLs dos posts, e um bug na lógica de retry estava fazendo a automação
-  # republicar o mesmo post repetidamente no Mastodon a cada execução quando o
-  # Bluesky falhava. Reativar só depois de corrigir o script e re-seedar o
-  # state.json com as novas URLs.
-  # schedule:
-  #   # A cada 30 min, das 08h às 23h no horário de Brasília (UTC-3) = 11h-02h UTC.
-  #   - cron: "0,30 11-23,0-2 * * *"
+  schedule:
+    # A cada 30 min, das 08h às 23h no horário de Brasília (UTC-3) = 11h-02h UTC.
+    - cron: "0,30 11-23,0-2 * * *"
   workflow_dispatch:
     inputs:
       seed_only:
