@@ -1,9 +1,14 @@
 name: Crosspost new blog posts
 
 on:
+  # Gatilho principal: disparado pelo workflow de deploy do blog
+  # (rcapitao/rcapitao-vhugo) assim que um post novo é publicado.
+  repository_dispatch:
+    types: [blog-published]
   schedule:
-    # A cada 30 min, das 08h às 23h no horário de Brasília (UTC-3) = 11h-02h UTC.
-    - cron: "0,30 11-23,0-2 * * *"
+    # Rede de segurança a cada 3h, das 08h às 23h no horário de Brasília
+    # (UTC-3) = 11h-02h UTC, caso o repository_dispatch falhe por algum motivo.
+    - cron: "0 11,14,17,20,23,2 * * *"
   workflow_dispatch:
     inputs:
       seed_only:
@@ -40,7 +45,7 @@ jobs:
           MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
           BLUESKY_HANDLE: ${{ vars.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
-          SEED_ONLY: ${{ inputs.seed_only && '1' || '' }}
+          SEED_ONLY: ${{ (github.event_name == 'workflow_dispatch' && inputs.seed_only) && '1' || '' }}
         run: python crosspost.py
 
       - name: Commit updated state
